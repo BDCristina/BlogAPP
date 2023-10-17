@@ -1,0 +1,25 @@
+from flask import Blueprint, request, redirect, render_template
+from injector import inject
+from setup.database_config import DataBaseConfig
+from setup.database_setup import DataBaseSetup
+from models.database_credentials import DataBaseCredentials
+
+setup_blueprint = Blueprint('setup_blueprint', __name__)
+
+
+@inject
+@setup_blueprint.route('/setup', methods=["GET", "POST"])
+def db_setup(database_config: DataBaseConfig):
+    if database_config.is_configured:
+        return redirect('/home')
+    if request.method == "POST":
+        database_credentials = DataBaseCredentials(request.form['user'],
+                                                   request.form['password'],
+                                                   request.form['database'])
+        database_config.save_credentials(database_credentials)
+        setup = DataBaseSetup()
+        setup.create_database(database_credentials)
+        if not setup.is_updated():
+            setup.update()
+        return redirect('/home')
+    return render_template('setup_db.html')
