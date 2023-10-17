@@ -1,0 +1,60 @@
+.button {
+    font-family: Brush Script MT;
+    font: bold 20px Brush Script MT;
+    text-decoration: none;
+    background-color: #FFC0CB;
+    color: #333333;
+    padding: 4px 10px 4px 10px;
+    border-top: 1px solid black;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid black;
+    margin: 20px;
+}
+
+.user {
+    margin: auto;
+    color: #F08080;
+    text-decoration: none;
+    font-size: 30px;
+    font-family: Brush Script MT;
+}
+
+.statistic {
+    width: 320px;
+    padding: 10px;
+    border: 5px solid #F08080;
+    align-self: center;
+    margin: auto;
+}
+
+.error {
+    background-color: antiquewhite;
+    color: darkred;
+}
+
+select {
+    border: 1px solid black;
+}
+
+.image {
+    width: 20%;
+    height: auto;
+}
+.form {
+    border: 1px solid black;
+}
+
+.article {
+    padding: 50px;
+    max-width: 100%;
+}
+
+.article p {
+    margin: 20px;
+}
+
+.bigger {
+    padding: 6px 12px 6px 12px;
+}
+

@@ -1,8 +1,7 @@
 import abc
-from models.blog_post import BlogPost
-from models.pagination import Pagination
 
-class BlogPostsInterface(metaclass=abc.ABCMeta):
+class ImageManagerInterface(metaclass=abc.ABCMeta):
+
     @classmethod
     def __subclasshook__(cls, subclass):
         return (hasattr(subclass, 'add') and
@@ -14,31 +13,26 @@ class BlogPostsInterface(metaclass=abc.ABCMeta):
                 NotImplemented)
 
     @abc.abstractmethod
-    def verify_if_owner_is_user(self, owner):
+    def save_image(self, new_image):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_all_posts(self, user, pagination: Pagination):
+    def edit_image(self, new_image, old_image):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_post_by_id(self, post_id):
+    def delete_image(self, filename):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def count(self, user):
+    def verify_image_already_exists(self, filename):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def rename_image(self, image, post_id):
         raise NotImplementedError
 
 
     @abc.abstractmethod
-    def add(self, new_post: BlogPost):
-        raise NotImplementedError
-
-
-    @abc.abstractmethod
-    def edit(self, post_id, new_title, new_content, new_image):
-        raise NotImplementedError
-
-    @abc.abstractmethod
-    def delete(self, post_id):
+    def verify_format(self, filename):
         raise NotImplementedError

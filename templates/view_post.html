@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title></title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+
+{% block body %}
+<script src="{{ url_for('static', filename = 'view_post_script.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+    ViewPost('{{ post_id }}', "{{ session['username']}}")
+</script>
+{%  endblock %}
